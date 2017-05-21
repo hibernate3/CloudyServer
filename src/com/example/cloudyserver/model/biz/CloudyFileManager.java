@@ -13,7 +13,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
-import com.example.cloudyserver.model.bean.CloudyFile;
+import com.example.cloudyserver.model.bean.CloudyFileBean;
 
 public class CloudyFileManager {
 	private static CloudyFileManager mInstance;
@@ -29,8 +29,8 @@ public class CloudyFileManager {
 		return mInstance;
 	}
 
-	public List<CloudyFile> getFilesName(int isAbs) {
-		List<CloudyFile> result = new ArrayList<CloudyFile>();
+	public List<CloudyFileBean> getFilesName(int isAbs) {
+		List<CloudyFileBean> result = new ArrayList<CloudyFileBean>();
 
 		File rootFile = new File(System.getProperty("user.dir"));
 		String photosDir = null;
@@ -43,9 +43,9 @@ public class CloudyFileManager {
 			if (files != null) {
 				for (File file : files) {
 					if (isAbs == 0) {
-						result.add(new CloudyFile(file.getName()));
+						result.add(new CloudyFileBean(file.getName()));
 					} else {
-						result.add(new CloudyFile(file.getAbsolutePath()));
+						result.add(new CloudyFileBean(file.getAbsolutePath()));
 					}
 				}
 			}

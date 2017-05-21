@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
-import com.example.cloudyserver.model.bean.CloudyFile;
+import com.example.cloudyserver.model.bean.CloudyFileBean;
 import com.example.cloudyserver.model.biz.CloudyFileManager;
 import com.opensymphony.xwork2.Action;
 
@@ -12,25 +12,16 @@ import net.sf.json.JSONArray;
 
 public class RequestFilesName implements Action {
 
-	private List<CloudyFile> cloudyFiles;
-    private String jsonResult;
+	private List<CloudyFileBean> cloudyFiles;
     
-    private int isAbs;
+    private int isAbs;//是否是需要包含文件绝对路径，0否，1是
     
-	public List<CloudyFile> getCloudyFiles() {
+	public List<CloudyFileBean> getCloudyFiles() {
 		return cloudyFiles;
 	}
 
-	public void setCloudyFiles(List<CloudyFile> cloudyFiles) {
+	public void setCloudyFiles(List<CloudyFileBean> cloudyFiles) {
 		this.cloudyFiles = cloudyFiles;
-	}
-
-	public String getJsonResult() {
-		return jsonResult;
-	}
-	
-	public void setJsonResult(String jsonResult) {
-		this.jsonResult = jsonResult;
 	}
 
 	public int isAbs() {
@@ -44,7 +35,6 @@ public class RequestFilesName implements Action {
 	@Override
 	public String execute() throws Exception {
 		cloudyFiles = CloudyFileManager.getInstance().getFilesName(isAbs);
-//		jsonResult = JSONArray.fromObject(cloudyFiles).toString();
 		
 		return SUCCESS;
 	}

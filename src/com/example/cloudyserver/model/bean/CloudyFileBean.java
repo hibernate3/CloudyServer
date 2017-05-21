@@ -1,13 +1,13 @@
 package com.example.cloudyserver.model.bean;
 
-public class CloudyFile {
+public class CloudyFileBean {
 	private String fileName;
 
-	public CloudyFile() {
+	public CloudyFileBean() {
 		super();
 	}
 	
-	public CloudyFile(String fileName) {
+	public CloudyFileBean(String fileName) {
 		super();
 		this.fileName = fileName;
 	}
